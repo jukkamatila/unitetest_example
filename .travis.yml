@@ -16,6 +16,7 @@ before_install:
  - which valgrind
  - cd "${TRAVIS_BUILD_DIR}"
 before_script:
+    - export GTEST_DIR=${HOME}/googletest/googletest
     - make
 script: "./modbus_test"
 branches:
