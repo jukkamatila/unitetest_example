@@ -20,7 +20,7 @@ before_install:
 before_script:
     - export GTEST_DIR=./googletest/googletest
     - make
-script: "./modbus_test"
+script: ./modbus_test
 branches:
   only:
     - master
@@ -29,7 +29,7 @@ notifications:
   recipients:
     - jukka.matila@vamk.fi
   email:
-    on_success: never
+    on_success: always
     on_failure: change
 rvm:
   - 9.00
