@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "modbus.h"
+#include <avr/io.h>
 
 #define TEST
 
@@ -7,6 +8,8 @@
 /***************************************************/
 void USART_init(unsigned int baud)
 {
+    UBBRH=0x51;
+
 }
 /*-------------------------------------------------*/
 unsigned char USART_receive_byte(void)
