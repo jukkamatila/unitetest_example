@@ -20,7 +20,7 @@ before_install:
  - pwd
  - ls -l
 before_script:
-    - export GTEST_DIR=${HOME}/googletest/googletest
+    - export GTEST_DIR=./googletest/googletest
     - make
 script: "./modbus_test"
 branches:
