@@ -1,0 +1,22 @@
+sudo: false
+
+language:
+  - c
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+
+before_install:
+  - pip install --user cpp-coveralls
+
+script:
+  - make
+  - ./modbus_test
+
+after_success:
+  - coveralls --root .. -E ".*external.*" -E ".*test/.*.c.*"
+
+notifications:
+  email: false
