@@ -6,21 +6,14 @@ dist: trusty
 before_install:
  - sudo apt-get -qq update
  - sudo apt-get install -y libgtest-dev valgrind
- - pwd
- - ls -l
- - git clone https://github.com/google/googletest.git
- - cd googletest
- - sudo cmake -DBUILD_SHARED_LIBS=ON .
- - sudo make
- - sudo make install
+
  - which valgrind
  - cd "${TRAVIS_BUILD_DIR}"
-  - pwd
- - ls -l
+
 before_script:
-    - export GTEST_DIR=./googletest/googletest
     - make
-script: ./modbus_test
+script:
+    - ./modbus_test
 branches:
   only:
     - master
