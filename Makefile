@@ -2,8 +2,6 @@ APP=modbus_ascii
 
 ifndef GTEST_DIR
 GTEST_DIR=${HOME}/googletest/googletest
-else
-GTEST_DIR=${GTEST_DIR}
 endif
 
 tests: libgtest.a modbus_test
