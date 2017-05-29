@@ -1,22 +1,32 @@
-sudo: false
-
-language:
-  - c
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-
+language: c
+compiler:
+  - gcc
+os: linux
+dist: trusty
 before_install:
-  - pip install --user cpp-coveralls
-
-script:
-  - make
-  - ./modbus_test
-
-after_success:
-  - coveralls --root .. -E ".*external.*" -E ".*test/.*.c.*"
-
+ - sudo apt-get -qq update
+ - sudo apt-get install -y libgtest-dev valgrind
+ - sudo wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz
+ - sudo tar xf release-1.7.0.tar.gz
+ - cd googletest-release-1.7.0
+ - sudo cmake -DBUILD_SHARED_LIBS=ON .
+ - sudo make
+ - sudo cp -a include/gtest /usr/include
+ - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
+ - which valgrind
+ - cd "${TRAVIS_BUILD_DIR}"
+before_script:
+    - make
+script: "./modbus_test"
+branches:
+  only:
+    - master
+    - pull_test
 notifications:
-  email: false
+  recipients:
+    - jukka.matila@vamk.fi
+  email:
+    on_success: never
+    on_failure: change
+rvm:
+  - 9.00
