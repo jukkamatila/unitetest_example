@@ -12,8 +12,7 @@ before_install:
  - cd googletest
  - sudo cmake -DBUILD_SHARED_LIBS=ON .
  - sudo make
- - sudo cp -a include/gtest /usr/include
- - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
+ - sudo make install
  - which valgrind
  - cd "${TRAVIS_BUILD_DIR}"
   - pwd
