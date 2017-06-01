@@ -108,7 +108,7 @@ void MB_create_frame(unsigned char *mb_frame, unsigned char *mb_data, unsigned c
     for (i=0; i<mb_length*2; i++)
     {
 
-        *(mb_frame+i*2) = dec2ascii((mb_data[i]>>4));
+        *(mb_frame+i*2+1) = dec2ascii((mb_data[i]>>4));
         *(mb_frame+i*2+2) = dec2ascii((mb_data[i]&0x0f));
 
     }
